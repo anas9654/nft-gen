@@ -12,6 +12,11 @@ class Home extends CI_Controller {
          $this->load->library('form_validation'); 
          $this->load->library('session'); 
          $this->load->helper('cookie');
+         if(isset($_COOKIE['user']) && $_COOKIE['user']!==""){
+            $data=$this->db->where(["emailId"=>$phone,"userPassword"=>md5($pass)])->get('tblusers')->result_array();
+            $_SESSION['user']=$data[0];
+            $_SESSION['is_login']=true; 
+         }
          // Please Define SerVer Path
          define('SERVER_PATH',$_SERVER['DOCUMENT_ROOT']);
  }
@@ -106,11 +111,11 @@ class Home extends CI_Controller {
          $data=$this->db->where(["emailId"=>$phone,"userPassword"=>md5($pass)])->get('tblusers');
          if($data->num_rows()>0){
             $user=$data->result_array();
-            $_SESSION['user']=$user[0];
             $_SESSION['is_login']=true;
+            $_SESSION['user']=$user[0];
+            setcookie('user', $user[0]['id'], time() + (86400 * 30), "/");
             $data=["status"=>1,"err"=>"WelCome Back ".$_SESSION['user']['Name']."!"];
             $this->db->where('id',$_SESSION['user']['id'])->update('tblusers',["last_login"=>time()]);
-            $_SESSION['step']=1;
          }else{
             $data=["status"=>0,"err"=>"You entered wrong Details"];  
          }
@@ -126,8 +131,6 @@ class Home extends CI_Controller {
       $update['emailId']=$this->input->post('email'); 
       $update['mobileNumber']=$this->input->post('mobile'); 
       $update['lastUpdationDate']=date('Y-m-d');
-      $update['YoutubeAPIKey']=$this->input->post('apikey'); 
-      $update['YoutubeAPISecret']=$this->input->post('apisec');
       $config['file_name'] = time().'-'.$_FILES["image"]['name'];
       $config['upload_path' ]  = 'uploads/profile/'; 
       $config['allowed_types'] = 'gif|jpg|png'; 
@@ -150,13 +153,9 @@ class Home extends CI_Controller {
 
     public function logout(){
       $this->session->sess_destroy();
+      unset($_COOKIE['user']);
       return redirect('home');
     } 
-
-    
- 
-
- 
 }
 
       
