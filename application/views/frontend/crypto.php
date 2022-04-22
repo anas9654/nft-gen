@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underpriced NFT Finder | Solana</title>
     <link rel="stylesheet" href="<?php echo base_url('css/main.css') ?>">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
 
     </head>
   <body style="">
@@ -19,7 +19,7 @@
          <div class="controls-wrapper shadow-c">
             <div class="btn-list">
                <div class="scroll">
-                <button class="btn-secondary active">
+                <button class="btn-secondary false">
                    <a href="nft_sol">Solana NFTs</a>
                 </button>
                 <button class="btn-secondary false">
@@ -31,7 +31,7 @@
                 <button class="btn-secondary false">
                   <a href="up_eth">Upcoming ETH NFTs</a>
                 </button>
-                <button class="btn-secondary false">
+                <button class="btn-secondary active">
                   <a href="crypto">Crypto Alerts</a>
                 </button>
               </div>
@@ -43,23 +43,15 @@
             $i=0;
                   $html = file_get_html('https://howrare.is/');
 
-
-                  foreach($html->find('.all_coll_row') as $element) 
+                  foreach($html->find('.all_collections') as $element) 
                   {
                      // $e = 
                      // echo $element;
-                      if($i>1)
-                      {
-                        // echo str_replace("src=\"","src=\"https://howrare.is",$element);
-                        echo "<div class=\"flex-container\">";
-                        foreach($element->find('.all_coll_col') as $e) 
-                          echo $e;
-                        echo "</div>";
-                      }
-                      $i++;
-
-                        // echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
+                      // if($i>1)
+                        echo str_replace("src=\"","src=\"https://howrare.is",$element);
                      
+                     //    echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
+                     $i++;
 
                   }
                   // echo $html;

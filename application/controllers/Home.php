@@ -54,7 +54,7 @@ class Home extends CI_Controller {
      $page='register';
 	   $this->load->view("frontend/{$page}",["title"=>"Register"]);  
 	}
-  public function nft_generate(){
+  public function nft_sol(){
 	  if(!isset($_SESSION['is_login'])){
          return redirect('home');
      }
@@ -62,12 +62,34 @@ class Home extends CI_Controller {
 	   $this->load->view("frontend/{$page}",["title"=>"Solana NFTs"]);  
 	}
 
-  public function nft_generate_eth(){
+  public function nft_eth(){
     if(!isset($_SESSION['is_login'])){
          return redirect('home');
      }
      $page='maineth';
      $this->load->view("frontend/{$page}",["title"=>"ETH NFTs"]);  
+  }
+
+  public function up_eth(){
+    if(!isset($_SESSION['is_login'])){
+         return redirect('home');
+     }
+     $page='upeth';
+     $this->load->view("frontend/{$page}",["title"=>"Up ETH NFTs"]);  
+  }
+  public function up_sol(){
+    if(!isset($_SESSION['is_login'])){
+         return redirect('home');
+     }
+     $page='upsol';
+     $this->load->view("frontend/{$page}",["title"=>"Up SOL NFTs"]);  
+  }
+  public function crypto(){
+    if(!isset($_SESSION['is_login'])){
+         return redirect('home');
+     }
+     $page='crypto';
+     $this->load->view("frontend/{$page}",["title"=>"Crypto Alerts"]);  
   }
 	
 	public function sign_up(){
