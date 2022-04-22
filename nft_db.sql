@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2022 at 04:47 PM
+-- Generation Time: Apr 22, 2022 at 07:14 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -37,18 +37,15 @@ CREATE TABLE `tblusers` (
   `regDate` timestamp NULL DEFAULT current_timestamp(),
   `isActive` int(1) DEFAULT NULL,
   `lastUpdationDate` datetime DEFAULT NULL,
-  `last_login` varchar(200) DEFAULT NULL,
-  `YoutubeAPIKey` varchar(255) NOT NULL,
-  `YoutubeAPISecret` varchar(255) NOT NULL
+  `last_login` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tblusers`
 --
 
-INSERT INTO `tblusers` (`id`, `Name`, `profile`, `emailId`, `mobileNumber`, `userPassword`, `regDate`, `isActive`, `lastUpdationDate`, `last_login`, `YoutubeAPIKey`, `YoutubeAPISecret`) VALUES
-(1, 'Mohd Anas', '1628423525-ead665c21c1351c3351744a938dade9f.jpg', 'mohdanas.codecounter@gmail.com', 9654503182, 'be77f8e570caa9818d15eef603afb116', '2021-08-07 18:30:00', 1, '2021-08-09 00:00:00', '1650549932', 'AIzaSyAE_5rV5TqwS1gihiuffUZZ9i-y8iWhFos', 'dBxl6ZvF-W0B-vKzFAjI31V-'),
-(3, NULL, '', 'anasjmi29@gmail.com', NULL, 'be77f8e570caa9818d15eef603afb116', '2022-04-20 18:30:00', 1, NULL, '1650551435', '', '');
+INSERT INTO `tblusers` (`id`, `Name`, `profile`, `emailId`, `mobileNumber`, `userPassword`, `regDate`, `isActive`, `lastUpdationDate`, `last_login`) VALUES
+(3, NULL, '', 'anasjmi29@gmail.com', NULL, 'be77f8e570caa9818d15eef603afb116', '2022-04-20 18:30:00', 1, NULL, '1650647140');
 
 --
 -- Indexes for dumped tables
