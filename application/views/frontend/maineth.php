@@ -17,29 +17,52 @@
    <?php include('include/header.php') ?>
       <div class="p-2 flex sm:flex-row flex-col sm:overflow-hidden overflow-y-auto content">
          <div class="controls-wrapper shadow-c">
-            <div class="btn-list">
-               <div class="scroll"><button class="btn-secondary false">Solana NFTs</button><button class="btn-secondary active">ETH NFTs</button><button class="btn-secondary false">Upcoming Solana NFTs</button><button class="btn-secondary false">Upcoming ETH NFTs</button><button class="btn-secondary false">Crypto Alerts</button></div>
+              <div class="btn-list">
+               <div class="scroll">
+                <button class="btn-secondary false">
+                   <a href="nft_sol">Solana NFTs</a>
+                </button>
+                <button class="btn-secondary active">
+                  <a href="nft_eth">ETH NFTs</a>
+                </button>
+                <button class="btn-secondary false">
+                  <a href="up_sol">Upcoming Solana NFTs</a>
+                </button>
+                <button class="btn-secondary false">
+                  <a href="up_eth">Upcoming ETH NFTs</a>
+                </button>
+                <button class="btn-secondary false">
+                  <a href="crypto">Crypto Alerts</a>
+                </button>
+              </div>
             </div>
             
          </div>
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
-         <?php
+           <?php
             $i=0;
-                  $html = file_get_html('https://howrare.is/');
+            // $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
+            // //Basically adding headers to the request
+            // $context = stream_context_create($opts);
+                  // $html = file_get_html('https://coinmarketcap.com/nft/collections/',false,$context);
+                  // $html = htmlspecialchars($html);
+                  $html = file_get_html('https://www.coingecko.com/en/nft');
 
-                  foreach($html->find('.all_collections') as $element) 
+
+
+                  foreach($html->find('tbody') as $element) 
                   {
-                     // $e = 
-                     // echo $element;
-                      // if($i>1)
-                        echo str_replace("src=\"","src=\"https://howrare.is",$element);
-                     
-                     //    echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
-                     $i++;
-
+                      if($i>1)
+                      {
+                        // echo str_replace("src=\"","src=\"https://howrare.is",$element);
+                        echo "<div class=\"flex-container\">";
+                        foreach($element->find('.all_coll_col') as $e) 
+                          echo $e;
+                        echo "</div>";
+                      }
+                      $i++;
                   }
-                  // echo $html;
-
+                  echo $html;
          ?>
            
          </div>
