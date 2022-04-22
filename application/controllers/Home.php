@@ -12,8 +12,8 @@ class Home extends CI_Controller {
          $this->load->library('form_validation'); 
          $this->load->library('session'); 
          $this->load->helper('cookie');
-         if(isset($_COOKIE['user']) && $_COOKIE['user']!==""){
-            $data=$this->db->where(["emailId"=>$phone,"userPassword"=>md5($pass)])->get('tblusers')->result_array();
+         if(isset($_COOKIE['user']) && $_COOKIE['user']!=="" && !isset($_SESSION['is_login'])){
+            $data=$this->db->where(["id"=>$_COOKIE['user']])->get('tblusers')->result_array();
             $_SESSION['user']=$data[0];
             $_SESSION['is_login']=true; 
          }
