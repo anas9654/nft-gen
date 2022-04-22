@@ -54,8 +54,16 @@ class Home extends CI_Controller {
          return redirect('home');
      }
      $page='main';
-	   $this->load->view("frontend/{$page}",["title"=>"NFT GENERATOR"]);  
+	   $this->load->view("frontend/{$page}",["title"=>"Solana NFTs"]);  
 	}
+
+  public function nft_generate_eth(){
+    if(!isset($_SESSION['is_login'])){
+         return redirect('home');
+     }
+     $page='maineth';
+     $this->load->view("frontend/{$page}",["title"=>"ETH NFTs"]);  
+  }
 	
 	public function sign_up(){
 	    if(isset($_POST['email']) && isset($_POST['password'])){
