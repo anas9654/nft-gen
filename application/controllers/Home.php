@@ -176,8 +176,62 @@ class Home extends CI_Controller {
     public function logout(){
       $this->session->sess_destroy();
       unset($_COOKIE['user']);
+      setcookie('user', null, -1, '/'); 
       return redirect('home');
     } 
+    public function admin(){
+      if($_SESSION['is_login']!=true && $_SESSION['user']['is_admin']!=1){
+        return redirect('home');
+      }
+      $page='admin';
+      $users=$this->db->where('is_admin',0)->get('tblusers')->result_array();
+      $this->load->view("frontend/{$page}",["title"=>"Admin Panel","users"=>$users]); 
+    }
+    public function delete_user($id){
+      if($_SESSION['is_login']!=true && $_SESSION['user']['is_admin']!=1){
+        return redirect('home');
+      }
+      $this->db->where('id',$id)->delete('tblusers');
+      return redirect('home/admin');
+    }
+    public function get_data($id){
+      if($id!==""){
+        $users=$this->db->where('id',$id)->get('tblusers')->result_array();
+        if($users){
+          echo json_encode(['user'=>$users[0]]);
+        }else{
+          $this->response->setStatusCode(404, 'Nope. Not here.'); 
+        }
+      }else{
+        $this->response->setStatusCode(404, 'Nope. Not here.');
+      }
+    }
+    public function user_update(){
+      if($_SESSION['is_login']!=true && $_SESSION['user']['is_admin']!=1){
+        $this->response->setStatusCode(403, 'Nope. Not here.'); 
+        exit();
+      }
+      if(isset($_POST['email'])&& $_POST['email']!=""){
+        $insert['emailId']=$_POST['email'];
+        if(isset($_POST['password']) && $_POST['password']!=""){
+          $insert['userPassword']=md5($_POST['password']);
+        } 
+        $insert['roll']=$_POST['roll'];
+        if($_POST['roll']=='Admin'){
+          $insert['is_admin']=1;
+        }
+        if(isset($_POST['is_update']) && $_POST['is_update']!=0){
+          $this->db->where('id',$_POST['is_update'])->update('tblusers',$insert);
+        }else{
+          $this->db->insert('tblusers',$insert);
+        }
+        echo json_encode(["status"=>1]);
+        exit();
+      }else{
+        $this->response->setStatusCode(422, 'Nope. Not here.');
+        exit();
+      }
+    }
 }
 
       

@@ -9,7 +9,7 @@
       <main class="w-screen h-screen">
          <?php include('include/header.php') ?>
          <div class="flex sm:flex-row flex-col">
-            <div class="side-bar"><a class="active" href="<?php echo base_url('home') ?>">Home</a><a href="<?php echo base_url('home/nft_generate') ?>">NFT Generator</a><a href="<?php echo base_url() ?>">Training</a></div>
+           <?php include('include/sidebar.php') ?>
             <div class="p-2 yt">
                <h1 class="text-center font-bold my-4">Welcome to <span class="text-primary">NFT Generator</span></h1>
                <iframe src="https://www.youtube.com/embed/LtKc4wumbQE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
