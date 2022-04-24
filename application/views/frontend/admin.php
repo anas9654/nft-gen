@@ -16,7 +16,7 @@
            <?php include('include/sidebar.php') ?>
             <div class="p-2 yt">
                 <a href="javascript:void(0)" onclick="$('#exampleModal').modal('toggle');"><button class="btn btn-primary">Add New</button></a>
-               <h3 class="text-center font-bold my-4">Welcome to <span class="text-primary">NFT Generator Admin Panel</span></h3>
+               <h3 class="text-center font-bold my-4">Admin Panel</h3>
                <table class="table">
   <thead class="thead-dark">
     <tr>

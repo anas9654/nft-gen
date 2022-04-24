@@ -16,28 +16,7 @@
 
    <?php include('include/header.php') ?>
       <div class="p-2 flex sm:flex-row flex-col sm:overflow-hidden overflow-y-auto content">
-         <div class="controls-wrapper shadow-c">
-              <div class="btn-list">
-               <div class="scroll">
-                <button class="btn-secondary false">
-                   <a href="nft_sol">Solana NFTs</a>
-                </button>
-                <button class="btn-secondary active">
-                  <a href="nft_eth">ETH NFTs</a>
-                </button>
-                <button class="btn-secondary false">
-                  <a href="up_sol">Upcoming Solana NFTs</a>
-                </button>
-                <button class="btn-secondary false">
-                  <a href="up_eth">Upcoming ETH NFTs</a>
-                </button>
-                <button class="btn-secondary false">
-                  <a href="crypto">Crypto Alerts</a>
-                </button>
-              </div>
-            </div>
-            
-         </div>
+        <?php include('include/sidebar-inside.php') ?>
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
            <?php
             $i=0;

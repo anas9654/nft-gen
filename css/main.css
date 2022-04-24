@@ -3220,8 +3220,32 @@ canvas {
 }
 
 .flex-container > div {
-  background-color: #f1f1f1;
+  
   margin: 10px;
   padding: 20px;
-  font-size: 30px;
+
+  
+}
+
+.all_coll_col:first-child {
+    width: 34%;
+}
+
+.all_coll_col {
+    width: 11%;
+    font-size: 16px;
+}
+
+.all_coll_col img {
+    margin:10px;
+    border-radius: 5px;
+}
+
+.all_coll_col:first-child > a {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    color: var(--opacity80);
+    min-height: 56px;
+    font-size: 20px;
 }

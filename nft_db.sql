@@ -48,6 +48,8 @@ CREATE TABLE `tblusers` (
 
 INSERT INTO `tblusers` (`id`, `Name`, `profile`, `emailId`, `mobileNumber`, `userPassword`, `regDate`, `isActive`, `lastUpdationDate`, `last_login`, `is_admin`, `roll`) VALUES
 (3, NULL, '', 'anasjmi29@gmail.com', NULL, 'be77f8e570caa9818d15eef603afb116', '2022-04-20 18:30:00', 1, NULL, '1650785932', 1, 'Free');
+INSERT INTO `tblusers` (`id`, `Name`, `profile`, `emailId`, `mobileNumber`, `userPassword`, `regDate`, `isActive`, `lastUpdationDate`, `last_login`, `is_admin`, `roll`) VALUES
+(1, NULL, '', 'yammaar9@gmail.com', NULL, 'be77f8e570caa9818d15eef603afb116', '2022-04-20 18:30:00', 1, NULL, '1650785932', 1, 'Free');
 
 --
 -- Indexes for dumped tables
