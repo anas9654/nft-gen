@@ -18,10 +18,10 @@
                   <a href="crypto">Crypto Alerts</a>
                 </button>
                  <button class="btn-secondary false">
-                  <a href="crypto">Solana Deal of the Day</a>
+                  <a href="soldeal">Solana Deal of the Day</a>
                 </button>
                 <button class="btn-secondary false">
-                  <a href="crypto">Ethereum Deal of the Day</a>
+                  <a href="ethdeal">Ethereum Deal of the Day</a>
                 </button>
               </div>
             </div>

@@ -20,17 +20,19 @@
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
          <?php
             $i=0;
-                  $html = file_get_html('https://howrare.is/');
+                  $html = file_get_html('https://gadgets360.com/finance/crypto-currency-price-in-india-inr-compare-bitcoin-ether-dogecoin-ripple-litecoin');
 
-                  foreach($html->find('.all_collections') as $element) 
+                  foreach($html->find('._shrinkjs') as $element) 
                   {
-                     // $e = 
-                     // echo $element;
-                      // if($i>1)
-                        echo str_replace("src=\"","src=\"https://howrare.is",$element);
+                    echo $element;
+
+                  //    // $e = 
+                  //    // echo $element;
+                  //     // if($i>1)
+                  //       // echo str_replace("src=\"","src=\"https://howrare.is",$element);
                      
-                     //    echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
-                     $i++;
+                  //    //    echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
+                  //    $i++;
 
                   }
                   // echo $html;

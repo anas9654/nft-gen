@@ -91,6 +91,23 @@ class Home extends CI_Controller {
      $page='crypto';
      $this->load->view("frontend/{$page}",["title"=>"Crypto Alerts"]);  
   }
+
+  public function soldeal(){
+    if(!isset($_SESSION['is_login'])){
+         return redirect('home');
+     }
+     $page='soldeal';
+     $this->load->view("frontend/{$page}",["title"=>"Sol Deal"]);  
+  }
+  public function ethdeal(){
+    if(!isset($_SESSION['is_login'])){
+         return redirect('home');
+     }
+     $page='ethdeal';
+     $this->load->view("frontend/{$page}",["title"=>"ETH Deal"]);  
+  }
+
+
 	
 	public function sign_up(){
 	    if(isset($_POST['email']) && isset($_POST['password'])){

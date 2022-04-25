@@ -23,7 +23,6 @@
             $i=0;
                   $html = file_get_html('https://howrare.is/');
 
-
                   foreach($html->find('.all_coll_row') as $element) 
                   {
                      // $e = 
@@ -33,8 +32,18 @@
                         // echo str_replace("src=\"","src=\"https://howrare.is",$element);
                         echo "<div class=\"flex-container\">";
                         foreach($element->find('.all_coll_col') as $e) 
-                          
-                            echo str_replace("src=\"","src=\"https://howrare.is",$e);
+                        {
+                          // $e = str_replace("<div class=\"all_coll_col\">","",$e);
+
+                          // $e = str_replace("</div>","",$e);
+                          // $e = str_replace("src=\"","src=\"https://howrare.is",$e);
+                          $e = str_replace("src=\"","src=\"https://howrare.is",$e);
+                          $e = str_replace("href=\"","href=\"https://howrare.is",$e);
+                          // $e = htmlspecialchars(str_replace("href=\"","href=\"https://howrare.is",$e));
+
+                          echo $e . "<br>";
+                            // echo str_replace("src=\"","src=\"https://howrare.is",$e);
+                        }
                           
                           
                         echo "</div>";

@@ -29,19 +29,19 @@
 
 
 
-                  foreach($html->find('tbody') as $element) 
+                  foreach($html->find('.table-scrollable') as $element) 
                   {
-                      if($i>1)
-                      {
-                        // echo str_replace("src=\"","src=\"https://howrare.is",$element);
-                        echo "<div class=\"flex-container\">";
-                        foreach($element->find('.all_coll_col') as $e) 
-                          echo $e;
-                        echo "</div>";
-                      }
-                      $i++;
+                    echo $element;
+                      // if($i>1)
+                      // {
+                      //   // echo str_replace("src=\"","src=\"https://howrare.is",$element);
+                      //   // echo "<div class=\"flex-container\">";
+                      //   // foreach($element->find('.all_coll_col') as $e) 
+                      //     echo $e;
+                      //   // echo "</div>";
+                      // }
+                      // $i++;
                   }
-                  echo $html;
          ?>
            
          </div>
