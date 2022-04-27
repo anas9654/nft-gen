@@ -29,90 +29,35 @@
                   $nftPrice = array();
                   
 
-                  // foreach($html->find('.all_coll_row') as $element) 
-                  // {
-                  //   // echo "<div class=\"flex-container\">";
-                  //   $element = str_replace("src=\"/n","href=\"https://howrare.is/n",$element);
-
-                  //   // if($i>2)
-                  //   //   echo htmlspecialchars($element);
-
-                  //    foreach($element->find('a') as $e) 
-                  //       {
-                  //         if($j%4==2){
-                  //           // echo $e . "<br>";
-                  //           array_push($nftPrice, $e);
-                  //         }
-                  //         $j++;
-                  //       }
-
-                  //   // foreach($html->find('.all_coll_col') as $e) {
-                  //   //   // echo $e;
-                  //   // }
-                    
-                   
-                  //    // $e = 
-                     
-                     
-                  //       // echo str_replace("src=\"","src=\"https://howrare.is",$element);
-                     
-                  //    //    echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
-                  //    $i++;
-                  //    // echo "</div><br>";
-
-                  // }
-                  
-                  // echo $html;
-
-                  foreach($html->find('.all_coll_row') as $element) 
+                  foreach($html->find('.all_coll_col') as $element) 
                   {
-                      if($i>0)
+
+                    if($i>6)
                       {
-                        foreach($element->find('a') as $e) 
-                        {
-                          // if($j%4==1){
-                            // echo $e . "<br>";
-                            array_push($nftPrice, $e);
-                          // }
-                          $j++;
+                        
+                          echo htmlspecialchars($element->innertext) . "<br>";
                         }
-                        $j=0;
-                        foreach($element->find('img') as $e) 
-                        {
-                            array_push($nftName, $e->title);
-                          $j++;
-                        }
-                        $j=0;
-                        foreach($element->find('a') as $e) 
-                        {
-                          if($j%4==0){
-                            array_push($nftLinks, "https://www.howrare.is" . $e->href);
-                          }
-                          $j++;
-                        }
-                        $j=0;
-                        foreach($element->find('img') as $e) 
-                        {
-                          array_push($imagesLinks, "https://www.howrare.is" . $e->src);
-                          $j++;
-                        }
-                      }
+                      
                       $i++;
+
                   }
+                  echo "<br>";
 
 
 
-                  $num = 0;
-                  foreach ($nftLinks as $n) {
-                    if($num>1)
-                    {
-                      print_r($nftLinks[$num] . "<br>");
-                      print_r($imagesLinks[$num] . "<br>");
-                      print_r($nftName[$num] . "<br>");
-                      print_r(htmlspecialchars($nftPrice[$num]) . "<br>");
-                    }
-                    $num++;
-                  }
+
+
+                  // $num = 0;
+                  // foreach ($nftLinks as $n) {
+                  //   if($num>1)
+                  //   {
+                  //     print_r($nftLinks[$num] . "<br>");
+                  //     print_r($imagesLinks[$num] . "<br>");
+                  //     print_r($nftName[$num] . "<br>");
+                  //     print_r(htmlspecialchars($nftPrice[$num]) . "<br>");
+                  //   }
+                  //   $num++;
+                  // }
 
          ?> 
        
