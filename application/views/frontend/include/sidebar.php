@@ -7,7 +7,9 @@ $current_page=$this->router->fetch_method();
     </a>
     <a href="<?php echo base_url('home/nft_sol') ?>">NFTs and Crypto</a>
     <a href="<?php echo base_url() ?>">Training</a>
-    <?php if($_SESSION['user']['is_admin']==1){ ?> 
-     <a class="<?php echo $current_page=='admin'?'active':'' ?>" href="<?php echo base_url('home/admin') ?>">Admin</a>
+    <?php if($_SESSION['user']['is_admin']==1 || $_SESSION['user']['roll']=='Agency'){ ?> 
+     <a class="<?php echo $current_page=='admin'?'active':'' ?>" href="<?php echo base_url('home/admin') ?>">
+       <?php echo $_SESSION['user']['is_admin']==1?'Admin':'Agency' ?>
+     </a>
     <?php } ?>
 </div>
