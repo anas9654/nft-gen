@@ -33,33 +33,116 @@
           </div>
          <?php
             $i=0;
-            
                   $html = file_get_html('https://howrare.is/?s=floor_a');
-
+                  $nftLinks=array();
+                  $imagesLinks=array();
+                  $nftName = array();
+                  $nftPrice = array();
                   foreach($html->find('.all_coll_row') as $element) 
                   {
-                      if($i>1)
+                      if($i>0)
                       {
-                        echo "<div class=\"flex-container\">";
-
-                        $j=0;
-                        foreach($element->find('.all_coll_col') as $e) 
+                        foreach($element->find('a') as $e) 
                         {
-
-                          if($j<2){
-                            $e = str_replace("src=\"","src=\"https://howrare.is",$e);
-                            $e = str_replace("href=\"","href=\"",$e);
-                            echo $e . "<br>";
+                          if($j%4==2){
+                            // echo $e . "<br>";
+                            array_push($nftPrice, $e);
                           }
                           $j++;
-
                         }
-                        echo "<button>Buy</button>";
-                        echo "<button>Website</button>";
-                        echo "</div>";
+                        $j=0;
+                        foreach($element->find('img') as $e) 
+                        {
+                            array_push($nftName, $e->title);
+                          $j++;
+                        }
+                        $j=0;
+                        foreach($element->find('a') as $e) 
+                        {
+                          if($j%4==0){
+                            array_push($nftLinks, "https://www.howrare.is" . $e->href);
+                          }
+                          $j++;
+                        }
+                        $j=0;
+                        foreach($element->find('img') as $e) 
+                        {
+                          array_push($imagesLinks, "https://www.howrare.is" . $e->src);
+                          $j++;
+                        }
                       }
                       $i++;
                   }
+
+
+
+                  $num = 0;
+                  foreach ($nftLinks as $n) {
+                    if($num>1)
+                    {
+                      print_r($nftLinks[$num] . "<br>");
+                      print_r($imagesLinks[$num] . "<br>");
+                      print_r($nftName[$num] . "<br>");
+                      print_r($nftPrice[$num] . "<br>");
+                    }
+                    $num++;
+                  }
+
+
+
+                  
+
+                  // print_r($nftLinks);
+                  // print_r($imagesLinks);
+
+
+
+
+                  // foreach($html->find('.all_coll_row') as $element) 
+                  // {
+                  //     if($i>1)
+                  //     {
+                  //       // echo "<div class=\"flex-container\">";
+
+                  //       $j=0;
+                  //       foreach($element->find('.all_coll_col') as $e) 
+                  //       {
+
+                  //         if($j<2){
+                  //           if($j==0){
+                  //             array_push($imageLinks, htmlspecialchars($e));
+                  //           }
+                  //           // $e = str_replace("src=\"","src=\"https://howrare.is",$e);
+                  //           // $e = str_replace("href=\"","href=\"",$e);
+                  //           // echo htmlspecialchars($e) . "<br>";
+
+
+                  //         }
+                  //         $j++;
+                  //       }
+                  //       // echo "<button>Buy</button>";
+                  //       // echo "<button>Website</button>";
+                  //       // echo "</div>";
+
+                        
+
+                  //     }
+                  //     $i++;
+                  // }
+
+                  // $a = explode('><', $imageLinks[0]);
+                  // print_r($a);
+
+                  // foreach($imageLinks as $a){
+                  //   // print_r($a . "<br>");
+
+                  //   print_r(explode('"',$a));
+                  //   // print_r($a . "<br>");
+                  // }
+
+                  // print_r($imageLinks);
+
+
          ?>
          </div>
       </div>
