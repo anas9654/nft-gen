@@ -23,7 +23,9 @@
       <th scope="col">#</th>
       <th scope="col">Email</th>
       <th scope="col">Roll</th>
-      <th scope="col">Action</th>
+      <?php if($_SESSION['user']['roll']!='Agency'){ ?>
+        <th scope="col">Action</th>
+      <?php } ?>
     </tr>
   </thead>
   <tbody>
@@ -34,8 +36,10 @@
               echo "<th>{$index}</th>";
               echo "<td>{$user['emailId']}</td>";
               echo "<td>{$user['roll']}</td>";
-              echo "<td><a href='".base_url('home/delete_user/'.$user['id'])."'><i class='fas fa-trash-alt'></i></a>
+              if($_SESSION['user']['roll']!='Agency'){
+               echo "<td><a href='".base_url('home/delete_user/'.$user['id'])."'><i class='fas fa-trash-alt'></i></a>
                         <a href='javascript:void(0)' onclick='GetData(".$user['id'].")'><i class='fas fa-pencil-alt'></i></a></td>";
+              }
               echo "<tr>";
           }
       } ?>

@@ -205,11 +205,11 @@ class Home extends CI_Controller {
       return redirect('home');
     } 
     public function admin(){
-      if($_SESSION['is_login']!=true && $_SESSION['user']['is_admin']!=1){
+      if($_SESSION['is_login']!=true && ($_SESSION['user']['is_admin']!=1 || $_SESSION['user']['roll']!="Agency")){
         return redirect('home');
       }
       $page='admin';
-      $users=$this->db->where('is_admin',0)->get('tblusers')->result_array();
+      $users=$this->db->where('is_admin',0)->where('id'!=$_SESSION['user']['id'])->get('tblusers')->result_array();
       $this->load->view("frontend/{$page}",["title"=>"Admin Panel","users"=>$users]); 
     }
     public function delete_user($id){
@@ -244,6 +244,8 @@ class Home extends CI_Controller {
         $insert['roll']=$_POST['roll'];
         if($_POST['roll']=='Admin'){
           $insert['is_admin']=1;
+        }else{
+          $insert['is_admin']=0;
         }
         if(isset($_POST['is_update']) && $_POST['is_update']!=0){
           $this->db->where('id',$_POST['is_update'])->update('tblusers',$insert);
