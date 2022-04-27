@@ -31,9 +31,20 @@
 
                   foreach($html->find('.svelte-10i0xj7') as $element) 
                   {
+                    $i=0;
+
+
+
+                    foreach ($element->find('div') as $div) {
+                      if($i==2)
+                        echo $div ;
+                      # code...
+                      $i++;
+                    }
+
                     
                      
-                        echo $element;
+                        
                       //   // echo str_replace("src=\"","src=\"https://howrare.is",$element);
                       //   // echo "<div class=\"flex-container\">";
                       //   // foreach($element->find('.all_coll_col') as $e) 

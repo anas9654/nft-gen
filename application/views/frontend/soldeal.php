@@ -18,6 +18,7 @@
       <div class="p-2 flex sm:flex-row flex-col sm:overflow-hidden overflow-y-auto content">
          <?php include('include/sidebar-inside.php') ?>
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
+          Potential Solana Projects
      
           <?php
             $i=0;
@@ -25,8 +26,12 @@
                   echo "<div class=\"flex-container\">";
                   foreach($html->find('.hot-artists-container__HotArtists_YaKcP') as $element) 
                   {
-
-                      echo $element . "<br>";
+                      // foreach ($element->find('div') as $el) {
+                        // foreach ($el->find('a') as $l) {
+                          echo $element -> innertext . "<br><br><br>";
+                        // }
+                      // }
+                      
                       $i++;
                   }
                   echo "</div>";
