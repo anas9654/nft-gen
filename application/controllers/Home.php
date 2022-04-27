@@ -107,6 +107,14 @@ class Home extends CI_Controller {
      $this->load->view("frontend/{$page}",["title"=>"ETH Deal"]);  
   }
 
+  public function training(){
+    if(!isset($_SESSION['is_login'])){
+         return redirect('home');
+     }
+     $page='training';
+     $this->load->view("frontend/{$page}",["title"=>"training"]);  
+  }
+
 
 	
 	public function sign_up(){
@@ -153,7 +161,7 @@ class Home extends CI_Controller {
             $_SESSION['is_login']=true;
             $_SESSION['user']=$user[0];
             setcookie('user', $user[0]['id'], time() + (86400 * 30), "/");
-            $data=["status"=>1,"err"=>"WelCome Back ".$_SESSION['user']['Name']."!"];
+            $data=["status"=>1,"err"=>"Welcome Back ".$_SESSION['user']['Name']];
             $this->db->where('id',$_SESSION['user']['id'])->update('tblusers',["last_login"=>time()]);
          }else{
             $data=["status"=>0,"err"=>"You entered wrong Details"];  

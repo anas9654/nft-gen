@@ -6,23 +6,28 @@
                    <a href="nft_sol">Solana NFTs</a>
                 </button>
                 <button class="btn-secondary false">
-                  <a href="nft_eth">ETH NFTs</a>
-                </button>
-                <button class="btn-secondary false">
                   <a href="up_sol">Upcoming Solana NFTs</a>
+                </button>
+                 <button class="btn-secondary false">
+                  <a href="soldeal">Hot Solana NFTs</a>
+                </button>
+
+
+                <button class="btn-secondary false">
+                  <a href="nft_eth">ETH NFTs</a>
                 </button>
                 <button class="btn-secondary false">
                   <a href="up_eth">Upcoming ETH NFTs</a>
                 </button>
                 <button class="btn-secondary false">
-                  <a href="crypto">Crypto Alerts</a>
+                  <a href="ethdeal">Ethereum Deals of the Day</a>
                 </button>
-                 <button class="btn-secondary false">
-                  <a href="soldeal">Solana Deal of the Day</a>
-                </button>
+
+
                 <button class="btn-secondary false">
-                  <a href="ethdeal">Ethereum Deal of the Day</a>
+                  <a href="crypto">Cryptocurrencies</a>
                 </button>
+               
               </div>
             </div>
             

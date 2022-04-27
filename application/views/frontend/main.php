@@ -9,7 +9,7 @@
     </head>
   <body style="">
     <div id="root">
-   <div style="position: fixed; z-index: 9999; inset: 16px; pointer-events: none;"></div>
+   <div style="position: fixed; z-index: 9999; pointer-events: none;"></div>
 
    <main>
 
@@ -18,46 +18,49 @@
    <?php include('include/header.php') ?>
       <div class="p-2 flex sm:flex-row flex-col sm:overflow-hidden overflow-y-auto content">
          <?php include('include/sidebar-inside.php') ?>
+
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
+          <center><h1>Underpriced Solana NFTs</h1></center>
+          <div class="flex-container">
+            <div class="all_coll_col">
+              <a href="#">Preview</a>
+            </div>
+            <br>
+            <div class="all_coll_col">
+              <a href="#">Floor Price</a>
+            </div>
+            <br>Links
+          </div>
          <?php
             $i=0;
-                  $html = file_get_html('https://howrare.is/');
+            
+                  $html = file_get_html('https://howrare.is/?s=floor_a');
 
                   foreach($html->find('.all_coll_row') as $element) 
                   {
-                     // $e = 
-                     // echo $element;
                       if($i>1)
                       {
-                        // echo str_replace("src=\"","src=\"https://howrare.is",$element);
                         echo "<div class=\"flex-container\">";
+
+                        $j=0;
                         foreach($element->find('.all_coll_col') as $e) 
                         {
-                          // $e = str_replace("<div class=\"all_coll_col\">","",$e);
 
-                          // $e = str_replace("</div>","",$e);
-                          // $e = str_replace("src=\"","src=\"https://howrare.is",$e);
-                          $e = str_replace("src=\"","src=\"https://howrare.is",$e);
-                          $e = str_replace("href=\"","href=\"https://howrare.is",$e);
-                          // $e = htmlspecialchars(str_replace("href=\"","href=\"https://howrare.is",$e));
+                          if($j<2){
+                            $e = str_replace("src=\"","src=\"https://howrare.is",$e);
+                            $e = str_replace("href=\"","href=\"",$e);
+                            echo $e . "<br>";
+                          }
+                          $j++;
 
-                          echo $e . "<br>";
-                            // echo str_replace("src=\"","src=\"https://howrare.is",$e);
                         }
-                          
-                          
+                        echo "<button>Buy</button>";
+                        echo "<button>Website</button>";
                         echo "</div>";
                       }
                       $i++;
-
-                        // echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
-                     
-
                   }
-                  // echo $html;
-
          ?>
-           
          </div>
       </div>
    </main>

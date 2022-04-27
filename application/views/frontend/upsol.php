@@ -20,15 +20,24 @@
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
          <?php
             $i=0;
+
                   $html = file_get_html('https://howrare.is/drops');
                   
 
-                  foreach($html->find('.all_collections_wrap') as $element) 
+                  foreach($html->find('.all_coll_row') as $element) 
                   {
                     echo "<div class=\"flex-container\">";
                     $element = str_replace("src=\"/n","href=\"https://howrare.is/n",$element);
+
+                    echo $element;
+
+                    // foreach($html->find('.all_coll_col') as $e) {
+                    //   // echo $e;
+                    // }
+                    
+                   
                      // $e = 
-                     echo $element;
+                     
                       // if($i>1)
                         // echo str_replace("src=\"","src=\"https://howrare.is",$element);
                      
@@ -40,7 +49,8 @@
                   
                   // echo $html;
 
-         ?>
+         ?> 
+       
            
          </div>
       </div>
