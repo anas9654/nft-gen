@@ -20,27 +20,47 @@
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
          <?php
             $i=0;
+
                   $html = file_get_html('https://howrare.is/drops');
+
+                  $nftLinks=array();
+                  $imagesLinks=array();
+                  $nftName = array();
+                  $nftPrice = array();
                   
 
-                  foreach($html->find('.all_collections_wrap') as $element) 
+                  foreach($html->find('.all_coll_col') as $element) 
                   {
-                    echo "<div class=\"flex-container\">";
-                    $element = str_replace("src=\"/n","href=\"https://howrare.is/n",$element);
-                     // $e = 
-                     echo $element;
-                      // if($i>1)
-                        // echo str_replace("src=\"","src=\"https://howrare.is",$element);
-                     
-                     //    echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
-                     $i++;
-                     echo "</div>";
+
+                    if($i>6)
+                      {
+                        
+                          echo htmlspecialchars($element->innertext) . "<br>";
+                        }
+                      
+                      $i++;
 
                   }
-                  
-                  // echo $html;
+                  echo "<br>";
 
-         ?>
+
+
+
+
+                  // $num = 0;
+                  // foreach ($nftLinks as $n) {
+                  //   if($num>1)
+                  //   {
+                  //     print_r($nftLinks[$num] . "<br>");
+                  //     print_r($imagesLinks[$num] . "<br>");
+                  //     print_r($nftName[$num] . "<br>");
+                  //     print_r(htmlspecialchars($nftPrice[$num]) . "<br>");
+                  //   }
+                  //   $num++;
+                  // }
+
+         ?> 
+       
            
          </div>
       </div>

@@ -18,28 +18,23 @@
       <div class="p-2 flex sm:flex-row flex-col sm:overflow-hidden overflow-y-auto content">
          <?php include('include/sidebar-inside.php') ?>
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
-         <?php
+          Potential Solana Projects
+     
+          <?php
             $i=0;
-                  $html = file_get_html('https://howrare.is/drops');
-                  
-
-                  foreach($html->find('.all_collections_wrap') as $element) 
+                  $html = file_get_html('https://solsea.io/');
+                  echo "<div class=\"flex-container\">";
+                  foreach($html->find('.hot-artists-container__HotArtists_YaKcP') as $element) 
                   {
-                    echo "<div class=\"flex-container\">";
-                    $element = str_replace("src=\"/n","href=\"https://howrare.is/n",$element);
-                     // $e = 
-                     echo $element;
-                      // if($i>1)
-                        // echo str_replace("src=\"","src=\"https://howrare.is",$element);
-                     
-                     //    echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
-                     $i++;
-                     echo "</div>";
-
+                      // foreach ($element->find('div') as $el) {
+                        // foreach ($el->find('a') as $l) {
+                          echo $element -> innertext . "<br><br><br>";
+                        // }
+                      // }
+                      
+                      $i++;
                   }
-                  
-                  // echo $html;
-
+                  echo "</div>";
          ?>
            
          </div>

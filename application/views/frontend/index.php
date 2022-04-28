@@ -11,8 +11,8 @@
          <div class="flex sm:flex-row flex-col">
            <?php include('include/sidebar.php') ?>
             <div class="p-2 yt">
-               <h1 class="text-center font-bold my-4">Welcome to <span class="text-primary">NFT Generator</span></h1>
-               <iframe src="https://www.youtube.com/embed/LtKc4wumbQE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+               <h1 class="text-center font-bold my-4">Welcome to <span class="text-primary">NFT Finder</span></h1>
+               <iframe src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
                <div class="mt-6 flex sm:flex-row flex-col items-center">
                   <a href="https://www.youtube.com/channel/UCEI27zjwnNBZaITCLeZuvVg" class="btn-yt items-center flex mr-2">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 16 16">

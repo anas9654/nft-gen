@@ -25,22 +25,32 @@
             // $context = stream_context_create($opts);
                   // $html = file_get_html('https://coinmarketcap.com/nft/collections/',false,$context);
                   // $html = htmlspecialchars($html);
-                  $html = file_get_html('https://www.coingecko.com/en/nft');
+                  $html = file_get_html('https://raritysniper.com/nft-collections?floorPrice=:0.1');
 
 
 
-                  foreach($html->find('.table-scrollable') as $element) 
+                  foreach($html->find('.svelte-10i0xj7') as $element) 
                   {
-                    echo $element;
-                      // if($i>1)
-                      // {
+                    $i=0;
+
+
+
+                    foreach ($element->find('div') as $div) {
+                      if($i==2)
+                        echo $div ;
+                      # code...
+                      $i++;
+                    }
+
+                    
+                     
+                        
                       //   // echo str_replace("src=\"","src=\"https://howrare.is",$element);
                       //   // echo "<div class=\"flex-container\">";
                       //   // foreach($element->find('.all_coll_col') as $e) 
                       //     echo $e;
                       //   // echo "</div>";
-                      // }
-                      // $i++;
+                      
                   }
          ?>
            
