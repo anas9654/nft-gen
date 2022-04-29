@@ -22,19 +22,70 @@
      
           <?php
             $i=0;
+              $nftLinks=array();
+              $imagesLinks=array();
+              $nftName = array();
+              $nftPrice = array();
+              $link = "";
+                  
                   $html = file_get_html('https://solsea.io/');
-                  echo "<div class=\"flex-container\">";
+                  // echo "<div class=\"flex-container\">";
                   foreach($html->find('.hot-artists-container__HotArtists_YaKcP') as $element) 
                   {
-                      // foreach ($element->find('div') as $el) {
-                        // foreach ($el->find('a') as $l) {
-                          echo htmlspecialchars($element -> innertext) . "<br><br><br>";
-                        // }
-                      // }
+
+                    foreach ($element->find('h4') as $el) {
+                        
+                         // echo htmlspecialchars($el->innertext) . "<br>";
+                          array_push($nftName, $el->innertext);
+                        
+                        // $i++;
+                      } 
+
+                    foreach ($element->find('.number__CollectionItem_3WP3P') as $el) {
+                        if($i%5==1){
+                          // echo htmlspecialchars($el->innertext) . "<br>";
+                          array_push($nftPrice, $el->innertext);
+                        }
+                        $i++;
+                      } 
+                      $i=0;
+
+
+                      foreach ($element->find('a') as $el) {
+                        if($i%3==1){
+                          $linkk = "https://solsea.io".htmlspecialchars($el -> href);
+                          array_push($nftLinks, $linkk);
+                          // echo "https://solsea.io".htmlspecialchars($el -> href) . "<br>";
+                        }
+                        $i++;
+                      } 
+
+
+                        foreach ($element->find('img') as $l) {
+                          if($i%2==1){
+                            $link = $l -> src;
+                            array_push($imagesLinks, $link);
+                            // echo $link . "<br>";
+                          }
+                          $i++;
+
+                        }
                       
-                      $i++;
                   }
-                  echo "</div>";
+
+                    $num = 0;
+                  foreach ($nftLinks as $n) {
+                    if($num>1)
+                    {
+                      print_r($nftLinks[$num] . "<br>");
+                      print_r($imagesLinks[$num] . "<br>");
+                      print_r($nftName[$num] . "<br>");
+                      print_r($nftPrice[$num] . "<br>");
+                      
+                    }
+                    $num++;
+                  }
+                  // echo "</div>";
          ?>
            
          </div>
