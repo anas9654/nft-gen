@@ -16,11 +16,13 @@
                 <button class="btn-secondary false">
                   <a href="nft_eth">ETH NFTs</a>
                 </button>
-                <button class="btn-secondary false">
-                  <a href="up_eth">Upcoming ETH NFTs</a>
-                </button>
+               
                 <button class="btn-secondary false">
                   <a href="ethdeal">Ethereum Deals of the Day</a>
+                </button>
+
+                 <button class="btn-secondary false">
+                  <a href="up_eth">Upcoming NFT Projects</a>
                 </button>
 
 

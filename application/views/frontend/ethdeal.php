@@ -4,86 +4,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underpriced NFT Finder | Upcoming Solana NFTs</title>
     <link rel="stylesheet" href="<?php echo base_url('css/main.css') ?>">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"       rel="stylesheet">
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
 
 
     </head>
   <body style="">
     <div id="root">
    <div style="position: fixed; z-index: 9999; inset: 16px; pointer-events: none;"></div>
-   <main>
+    <main>
 
-   <?php include('./simple_html_dom.php'); ?>
+            <?php include('./simple_html_dom.php'); ?>
 
-   <?php include('include/header.php') ?>
-      <div class="p-2 flex sm:flex-row flex-col sm:overflow-hidden overflow-y-auto content">
-         <?php include('include/sidebar-inside.php') ?>
-         <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
-         <!-- <?php
-            // $i=0;
-            //       $html = file_get_html('https://howrare.is/drops');
-                  
+            <?php include('include/header.php') ?>
+            <div class="p-2 flex sm:flex-row flex-col sm:overflow-hidden overflow-y-auto content">
+                <?php include('include/sidebar-inside.php') ?>
+                <div
+                    class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
+                    <?php
 
-            //       foreach($html->find('.all_collections_wrap') as $element) 
-            //       {
-            //         echo "<div class=\"flex-container\">";
-            //         $element = str_replace("src=\"/n","href=\"https://howrare.is/n",$element);
-            //          // $e = 
-            //          echo $element;
-            //           // if($i>1)
-            //             // echo str_replace("src=\"","src=\"https://howrare.is",$element);
-                     
-            //          //    echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
-            //          $i++;
-            //          echo "</div>";
-
-            //       }
-                  
-            //       // echo $html;
-
-         ?> -->
-
-         <?php
             $i=0;
-                  $html = file_get_html('https://howrare.is/');
+            $skip = 0;
+              $nftLinks=array();
+              $nftImgLinks=array();
+              $nftNames=array();
+              $nftPrice = array();
 
-                  foreach($html->find('.all_coll_row') as $element) 
-                  {
-                     // $e = 
-                     // echo $element;
-                      if($i>1)
-                      {
-                        // echo str_replace("src=\"","src=\"https://howrare.is",$element);
-                        echo "<div class=\"flex-container\">";
-                        foreach($element->find('.all_coll_col') as $e) 
-                        {
-                          // $e = str_replace("<div class=\"all_coll_col\">","",$e);
+                  $html = file_get_html('https://raritysniper.com/nft-collections?sort=oneDayVolume:asc');
 
-                          // $e = str_replace("</div>","",$e);
-                          // $e = str_replace("src=\"","src=\"https://howrare.is",$e);
-                          $e = str_replace("src=\"","src=\"https://howrare.is",$e);
-                          $e = str_replace("href=\"","href=\"",$e);
-                          // $e = htmlspecialchars(str_replace("href=\"","href=\"https://howrare.is",$e));
 
-                          echo $e . "<br>";
-                            // echo str_replace("src=\"","src=\"https://howrare.is",$e);
+                  foreach ($html->find('.mb-4') as $div) {
+                    if($i>9){
+
+                       foreach ($div->find('span') as $a) {
+                        if($skip==0){
+                        // echo htmlspecialchars($a->innertext) . "<br><br>";
+                        array_push($nftPrice, $a->innertext);
+                         $skip=1;
                         }
-                          
-                          
-                        echo "</div>";
+                        // 
                       }
-                      $i++;
+                      $skip=0;
+                      foreach ($div->find('a') as $a) {
+                        // echo htmlspecialchars($a->href) . "<br><br>";
+                        array_push($nftLinks, "https://raritysniper.com".$a->href);
+                      }
 
-                        // echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
-                     
-
+                      foreach ($div->find('img') as $a) {
+                        if($skip==0){
+                          array_push($nftImgLinks, $a->src);
+                          // echo htmlspecialchars($a -> src) . "<br><br>";
+                          $skip=1;
+                        }
+                        
+                        // array_push($nftImgLinks, "https://raritysniper.com".$a->src);
+                      }
+                      $skip=0;
+                      foreach ($div->find('img') as $a) {
+                        if($skip==0){
+                          array_push($nftNames, $a->alt);
+                          // echo htmlspecialchars($a->alt) . "<br><br>";
+                          $skip=1;
+                        }
+                        
+                      }
+                      $skip = 0;
+                    }
+                    $i++;
                   }
-                  // echo $html;
 
+                  
+
+             
          ?>
-           
-         </div>
-      </div>
-   </main>
+                    <section>
+                        <div
+                            class="grid grid-cols-2 4k:grid-cols-8 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 auto-cols-fr -mx-2 svelte-10i0xj7">
+                            <?php
+              $num = 0;
+                  foreach ($nftLinks as $n) {
+                    if($num>1)
+                    {
+                     ?>
+                            <div class="px-2 mb-4"><a rel="noopener noreferrer nofollow"
+                                    href="<?php echo $nftLinks[$num] ?>" target="_blank">
+                                    <div class="transition-transform mt-2 md:hover:-translate-y-2 h-full shadow hover:shadow-lg rounded-lg overflow-hidden "
+                                        data-cy="card-featured-collection">
+                                        <div
+                                            class="relative flex flex-col min-w-0 break-words bg-transparent w-full h-full">
+                                            <div
+                                                class="w-full h-full align-middle overflow-hidden relative svelte-f3nlpp">
+                                                <img class="w-full h-full align-middle object-cover dark:brightness-80 dark:contrast-103 svelte-f3nlpp"
+                                                    alt="Cool Pigz" src="<?php echo $nftImgLinks[$num] ?>"
+                                                    loading="lazy" decoding="async"> <img
+                                                    class="w-full h-full align-middle object-cover placeholder dark:hidden svelte-f3nlpp opacity-0 absolute"
+                                                    src="/assets/img/rarity-loading.gif" alt="Cool Pigz"> <img
+                                                    class="w-full h-full align-middle object-cover placeholder hidden dark:block svelte-f3nlpp opacity-0 absolute"
+                                                    src="/assets/img/rarity-loading-dark.gif" alt="Cool Pigz">
+                                                <div
+                                                    class="absolute bottom-0 left-0 right-0 h-10 bg-white dark:bg-dark-card background-hack svelte-f3nlpp">
+                                                </div>
+                                            </div>
+                                            <div class="h-20 sm:h-24 shrink-0"></div>
+                                            <div class="absolute bottom-0 left-0 right-0">
+                                                <blockquote slot="bottom"
+                                                    class="flex-1 w-full bg-white dark:bg-dark-card relative p-4 space-1">
+                                                    <h4 class="w-full text-left text-sm sm:text-base font-extrabold text-blueGray-dark dark:text-dark-text border-gray-200"
+                                                        data-ellipsis-id="1"><?php echo $nftNames[$num] ?>
+                                                    </h4>
+                                                    <div
+                                                        class="flow-root text-sm text-blueGray-light dark:text-dark-text antialiased whitespace-nowrap">
+                                                        <div class="text-left float-left items-center gap-0.5 bg-blueGray-dark text-orangeWhiteHover rounded-md px-1.5"
+                                                            data-cy="coin-ETH">
+                                                            <!-- <i class="fab fa-ethereum fa-xs svelte-10eojg6"></i> -->
+                                                            <?php echo $nftPrice[$num] ?>
+                                                        </div>
+                                                        <a href="<?php echo $nftLinks[$num] ?>">
+                                                            <button
+                                                                class=" float-right bg-green-300 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                                                                <span style="color: white;">Buy</span>
+                                                            </button></a>
+                                                    </div>
+
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a> </div>
+                            <?php 
+                    }
+                    $num++;
+                  }
+?>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </main>
 </div>
 
 </body></html>

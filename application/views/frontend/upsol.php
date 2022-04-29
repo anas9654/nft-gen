@@ -99,7 +99,7 @@
                                                         <a href="<?php echo $nftLinks[$num] ?>">
                                                             <button
                                                                 class=" float-right bg-green-300 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-                                                                <span style="color: white;">Buy</span>
+                                                                <span style="color: white;">Know More</span>
                                                             </button></a>
                                                     </div>
 

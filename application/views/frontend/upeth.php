@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underpriced NFT Finder | Solana</title>
     <link rel="stylesheet" href="<?php echo base_url('css/main.css') ?>">
+    
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"       rel="stylesheet">
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
 
 
     </head>
@@ -20,25 +23,159 @@
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
          <?php
             $i=0;
+            $nftName = array();
+            $imagesLinks=array();
+            $nftlink = array();
+            $nftPrice = array();
                   $html = file_get_html('https://nextdrop.is/upcoming-nft-drops');
-
-                  foreach($html->find('.table') as $element) 
-                  {
-                     // $e = 
-                     // echo $element;
-                      // if($i>1)
-                    echo str_replace("src=\"/static","src=\"https://howrare.is/static",$element);
-                    
-                      echo $element;
-                      // echo str_replace("src=\"","src=\"https://howrare.is",$element);
-                     
-                     //    echo "<div class=\"flex-container\"><img class=\"nft-icon\" src=\"https://howrare.is" . $element->src . "\"><div>NFT NAME</div><div>Price 1 SOL</div></div>";
+                  foreach($html->find('td') as $element) {
+                        if($i%9==4)
+                        {
+                          // foreach($element->find('a') as $e) {
+                            // echo htmlspecialchars($element) . "<br><br><br>";
+                            array_push($nftPrice, htmlspecialchars($element -> innertext));
+                          // }
+                    }
                      $i++;
-
                   }
-                  // echo $html;
+
+                  foreach($html->find('td') as $element) {
+                    
+                   if($i%9==2)
+                        {
+                          foreach($element->find('a') as $e) {
+                            // echo "https://nextdrop.is" . htmlspecialchars($e -> href) . "<br><br><br>";
+                            array_push($nftlink, "https://nextdrop.is" . htmlspecialchars($e -> href));
+                          }
+                        
+                    }
+                     $i++;
+                  
+
+
+                   
+                  }
+
+
+
+
+                     // echo $element;
+                    foreach($html->find('strong') as $element) {
+                      if($i>4){
+                        if($i%2==0)
+                        {
+                          // echo htmlspecialchars($element -> innertext) . "<br>";
+                          array_push($nftName, $element->innertext);
+                        }
+                        
+                      }
+                      $i++;
+                    }
+
+
+
+                    foreach($html->find('img') as $element) {
+
+                      if($i>1)
+                      {     
+                        if($element->src == "/static/images/default.png")      {
+                          array_push($imagesLinks, $element -> getAttribute('data-src'));
+                        }         
+                        else{
+                          array_push($imagesLinks, $element->src);
+                        }
+                      }
+                     $i++;
+                    }
+
+
+                    array_shift($imagesLinks);
+                    array_shift($imagesLinks);
+                    // array_shift($imagesLinks);
+                    array_shift($nftName);
+                    array_shift($nftName);
+                    array_shift($nftName);
+                    // array_shift($imagesLinks);
+                    // array_shift($imagesLinks);
+                    // print_r($imagesLinks);
+
+                  // $num = 0;
+                  // foreach ($imagesLinks as $n) {
+
+                  //   if($num>1)
+                  //   {
+                  //     print_r($imagesLinks[$num-1] . "<br>");  
+                  //     print_r($nftlink[$num] . "<br>");
+                  //     print_r($nftName[$num] . "<br>");
+                  //     print_r(htmlspecialchars($nftPrice[$num]) . "<br>");
+                  //   }
+                  //   $num++;
+                  // }
+
+                    
 
          ?>
+
+
+                    <section>
+                        <div
+                            class="grid grid-cols-2 4k:grid-cols-8 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 auto-cols-fr -mx-2 svelte-10i0xj7">
+                            <?php
+              $num = 0;
+                  foreach ($nftlink as $n) {
+                    if($num>1)
+                    {
+                     ?>
+                            <div class="px-2 mb-4"><a rel="noopener noreferrer nofollow"
+                                    href="<?php echo $nftlink[$num] ?>" target="_blank">
+                                    <div class="transition-transform mt-2 md:hover:-translate-y-2 h-full shadow hover:shadow-lg rounded-lg overflow-hidden "
+                                        data-cy="card-featured-collection">
+                                        <div
+                                            class="relative flex flex-col min-w-0 break-words bg-transparent w-full h-full">
+                                            <div
+                                                class="w-full h-full align-middle overflow-hidden relative svelte-f3nlpp">
+                                                <img class="w-full h-full align-middle object-cover dark:brightness-80 dark:contrast-103 svelte-f3nlpp"
+                                                    alt="Cool Pigz" src="<?php echo $imagesLinks[$num] ?>"
+                                                    loading="lazy" decoding="async"> <img
+                                                    class="w-full h-full align-middle object-cover placeholder dark:hidden svelte-f3nlpp opacity-0 absolute"
+                                                    src="/assets/img/rarity-loading.gif" alt="Cool Pigz"> <img
+                                                    class="w-full h-full align-middle object-cover placeholder hidden dark:block svelte-f3nlpp opacity-0 absolute"
+                                                    src="/assets/img/rarity-loading-dark.gif" alt="Cool Pigz">
+                                                <div
+                                                    class="absolute bottom-0 left-0 right-0 h-10 bg-white dark:bg-dark-card background-hack svelte-f3nlpp">
+                                                </div>
+                                            </div>
+                                            <div class="h-20 sm:h-24 shrink-0"></div>
+                                            <div class="absolute bottom-0 left-0 right-0">
+                                                <blockquote slot="bottom"
+                                                    class="flex-1 w-full bg-white dark:bg-dark-card relative p-4 space-1">
+                                                    <h4 class="w-full text-left text-sm sm:text-base font-extrabold text-blueGray-dark dark:text-dark-text border-gray-200"
+                                                        data-ellipsis-id="1"><?php echo $nftName[$num] ?>
+                                                    </h4>
+                                                    <div
+                                                        class="flow-root text-sm text-blueGray-light dark:text-dark-text antialiased whitespace-nowrap">
+                                                        <div class="text-left float-left items-center gap-0.5 bg-blueGray-dark text-orangeWhiteHover rounded-md px-1.5"
+                                                            data-cy="coin-ETH">
+                                                            <!-- <i class="fab fa-ethereum fa-xs svelte-10eojg6"></i> -->
+                                                            <?php echo $nftPrice[$num] ?>
+                                                        </div>
+                                                        <a href="<?php echo $nftLinks[$num] ?>">
+                                                            <button
+                                                                class=" float-right bg-green-300 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                                                                <span style="color: white;">Buy</span>
+                                                            </button></a>
+                                                    </div>
+
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a> </div>
+                            <?php 
+                    }
+                    $num++;
+                  }
+?>
            
          </div>
       </div>

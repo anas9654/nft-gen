@@ -20,9 +20,9 @@
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
          <?php
             $i=0;
-                  $html = file_get_html('https://gadgets360.com/finance/crypto-currency-price-in-india-inr-compare-bitcoin-ether-dogecoin-ripple-litecoin');
+                  $html = file_get_html('https://crypto.com/price/showroom/biggest-gainers');
 
-                  foreach($html->find('._shrinkjs') as $element) 
+                  foreach($html->find('table') as $element) 
                   {
                     echo $element;
 
