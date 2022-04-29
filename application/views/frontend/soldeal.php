@@ -28,7 +28,7 @@
                   {
                       // foreach ($element->find('div') as $el) {
                         // foreach ($el->find('a') as $l) {
-                          echo $element -> innertext . "<br><br><br>";
+                          echo htmlspecialchars($element -> innertext) . "<br><br><br>";
                         // }
                       // }
                       

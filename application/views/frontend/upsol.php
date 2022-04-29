@@ -26,7 +26,7 @@
                   $nftLinks=array();
                   $imagesLinks=array();
                   $nftName = array();
-                  $nftPrice = array();
+                  // $nftPrice = array();
                   
 
                   foreach($html->find('.all_coll_col') as $element) 
@@ -34,44 +34,20 @@
 
                     if($i>6)
                     {
-                      foreach($element->find('a') as $e) 
-                      {
-                        if($j%4==2){
-                          // echo $e . "<br>";
-                          array_push($nftPrice, $e);
+                      if($i%7==0){
+                        foreach($element->find('img') as $e) {
+                          array_push($imagesLinks, htmlspecialchars($e->src));
                         }
-                        $j++;
-                      }
-                      $j=0;
-                      foreach($element->find('img') as $e) 
-                      {
-                          array_push($nftName, $e->title);
-                        $j++;
-                      }
-                      $j=0;
-                      foreach($element->find('a') as $e) 
-                      {
-                        if($j%4==0){
-                          array_push($nftLinks, "https://www.howrare.is" . $e->href);
+                        foreach($element->find('span') as $e) {
+                          array_push($nftName, htmlspecialchars($e->innertext));
                         }
-                        $j++;
                       }
-                      $j=0;
-                      foreach($element->find('img') as $e) 
-                      {
-                        array_push($imagesLinks, "https://www.howrare.is" . $e->src);
-                        $j++;
+                      if($i%7==1){
+                        array_push($nftLinks, htmlspecialchars($element->innertext));
                       }
-                    }
-                      
-                      $i++;
-
                   }
-                  echo "<br>";
-
-
-
-
+                      $i++;
+                  }
 
                   $num = 0;
                   foreach ($nftLinks as $n) {
@@ -80,13 +56,15 @@
                       print_r($nftLinks[$num] . "<br>");
                       print_r($imagesLinks[$num] . "<br>");
                       print_r($nftName[$num] . "<br>");
-                      print_r(htmlspecialchars($nftPrice[$num]) . "<br>");
                     }
                     $num++;
                   }
 
          ?> 
        
+
+
+
            
          </div>
       </div>

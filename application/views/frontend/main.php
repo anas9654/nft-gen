@@ -64,7 +64,8 @@ foreach($html->find('.all_coll_row') as $element)
          <?php include('include/sidebar-inside.php') ?>
 
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
-          <center><h1>Underpriced Solana NFTs</h1></center>
+          <center><h1>Underpriced Solana NFTs</h1>
+            <h1>Why you should consider buying these NFTs? Because they are low priced and having good number of holders that can give you good return on investment. Note: Always do your own research.</h1></center>
           
           <section>
           <div class="grid grid-cols-2 4k:grid-cols-8 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 auto-cols-fr -mx-2 svelte-10i0xj7">
@@ -100,11 +101,13 @@ foreach($html->find('.all_coll_row') as $element)
                                       </h4>
                                       <div  class="flow-root text-sm text-blueGray-light dark:text-dark-text antialiased whitespace-nowrap">
                                         <div class="text-left float-left items-center gap-0.5 bg-blueGray-dark text-orangeWhiteHover rounded-md px-1.5"
-                                                data-cy="coin-ETH"><i class="fab fa-ethereum fa-xs svelte-10eojg6"></i>
+                                                data-cy="coin-ETH">
+                                                <!-- <i class="fab fa-ethereum fa-xs svelte-10eojg6"></i> -->
                                                 <?php echo $nftPrice[$num] ?></div>
+                                                <a href="<?php echo $nftLinks[$num] ?>">
                                                 <button class=" float-right bg-green-300 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
-  <span>Buy</span>
-</button>
+                                                <span style="color: white;">Buy</span>
+                                              </button></a>
                                     </div>
                                      
                                 </blockquote>

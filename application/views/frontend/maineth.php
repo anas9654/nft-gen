@@ -19,39 +19,70 @@
         <?php include('include/sidebar-inside.php') ?>
          <div class="shadow-c sm:overflow-y-scroll bg-white rounded-xl p-2 sm:ml-2 sm:mt-0 mt-2 w-full sm:h-full h-max">
            <?php
+
             $i=0;
-            // $opts = array('http'=>array('header' => "User-Agent:MyAgent/1.0\r\n")); 
-            // //Basically adding headers to the request
-            // $context = stream_context_create($opts);
-                  // $html = file_get_html('https://coinmarketcap.com/nft/collections/',false,$context);
-                  // $html = htmlspecialchars($html);
+            $skip = 0;
+              $nftLinks=array();
+              $nftImgLinks=array();
+              $nftNames=array();
+              $nftPrice = array();
+
                   $html = file_get_html('https://raritysniper.com/nft-collections?floorPrice=:0.1');
 
 
+                  foreach ($html->find('.mb-4') as $div) {
+                    if($i>9){
 
-                  foreach($html->find('.svelte-10i0xj7') as $element) 
-                  {
-                    $i=0;
+                       foreach ($div->find('span') as $a) {
+                        if($skip==0){
+                        // echo htmlspecialchars($a->innertext) . "<br><br>";
+                        array_push($nftPrice, $a->innertext);
+                         $skip=1;
+                        }
+                        // 
+                      }
+                      $skip=0;
+                      foreach ($div->find('a') as $a) {
+                        // echo htmlspecialchars($a->href) . "<br><br>";
+                        array_push($nftLinks, "https://raritysniper.com".$a->href);
+                      }
 
-
-
-                    foreach ($element->find('div') as $div) {
-                      if($i==2)
-                        echo $div ;
-                      # code...
-                      $i++;
-                    }
-
-                    
-                     
+                      foreach ($div->find('img') as $a) {
+                        if($skip==0){
+                          array_push($nftImgLinks, $a->src);
+                          // echo htmlspecialchars($a -> src) . "<br><br>";
+                          $skip=1;
+                        }
                         
-                      //   // echo str_replace("src=\"","src=\"https://howrare.is",$element);
-                      //   // echo "<div class=\"flex-container\">";
-                      //   // foreach($element->find('.all_coll_col') as $e) 
-                      //     echo $e;
-                      //   // echo "</div>";
-                      
+                        // array_push($nftImgLinks, "https://raritysniper.com".$a->src);
+                      }
+                      $skip=0;
+                      foreach ($div->find('img') as $a) {
+                        if($skip==0){
+                          array_push($nftNames, $a->alt);
+                          // echo htmlspecialchars($a->alt) . "<br><br>";
+                          $skip=1;
+                        }
+                        
+                      }
+                      $skip = 0;
+                    }
+                    $i++;
                   }
+
+                  $num = 0;
+                  foreach ($nftLinks as $n) {
+                    if($num>1)
+                    {
+                      print_r($nftLinks[$num] . "<br>");
+                      print_r($nftImgLinks[$num] . "<br>");
+                      print_r($nftNames[$num] . "<br>");
+                      print_r(htmlspecialchars($nftPrice[$num]) . "<br>");
+                    }
+                    $num++;
+                  }
+
+             
          ?>
            
          </div>
