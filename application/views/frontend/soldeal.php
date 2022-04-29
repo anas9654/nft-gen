@@ -4,7 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underpriced NFT Finder | Upcoming Solana NFTs</title>
     <link rel="stylesheet" href="<?php echo base_url('css/main.css') ?>">
-
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"       rel="stylesheet">
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
 
     </head>
   <body style="">
@@ -73,21 +74,70 @@
                       
                   }
 
-                    $num = 0;
+                 
+                  // echo "</div>";
+         ?>
+           <section>
+                        <div
+                            class="grid grid-cols-2 4k:grid-cols-8 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 auto-cols-fr -mx-2 svelte-10i0xj7">
+                            <?php
+              $num = 0;
                   foreach ($nftLinks as $n) {
                     if($num>1)
                     {
-                      print_r($nftLinks[$num] . "<br>");
-                      print_r($imagesLinks[$num] . "<br>");
-                      print_r($nftName[$num] . "<br>");
-                      print_r($nftPrice[$num] . "<br>");
-                      
+                     ?>
+                            <div class="px-2 mb-4"><a rel="noopener noreferrer nofollow"
+                                    href="<?php echo $nftLinks[$num] ?>" target="_blank">
+                                    <div class="transition-transform mt-2 md:hover:-translate-y-2 h-full shadow hover:shadow-lg rounded-lg overflow-hidden "
+                                        data-cy="card-featured-collection">
+                                        <div
+                                            class="relative flex flex-col min-w-0 break-words bg-transparent w-full h-full">
+                                            <div
+                                                class="w-full h-full align-middle overflow-hidden relative svelte-f3nlpp">
+                                                <img class="w-full h-full align-middle object-cover dark:brightness-80 dark:contrast-103 svelte-f3nlpp"
+                                                    alt="Cool Pigz" src="<?php echo $imagesLinks[$num] ?>"
+                                                    loading="lazy" decoding="async"> <img
+                                                    class="w-full h-full align-middle object-cover placeholder dark:hidden svelte-f3nlpp opacity-0 absolute"
+                                                    src="/assets/img/rarity-loading.gif" alt="Cool Pigz"> <img
+                                                    class="w-full h-full align-middle object-cover placeholder hidden dark:block svelte-f3nlpp opacity-0 absolute"
+                                                    src="/assets/img/rarity-loading-dark.gif" alt="Cool Pigz">
+                                                <div
+                                                    class="absolute bottom-0 left-0 right-0 h-10 bg-white dark:bg-dark-card background-hack svelte-f3nlpp">
+                                                </div>
+                                            </div>
+                                            <div class="h-20 sm:h-24 shrink-0"></div>
+                                            <div class="absolute bottom-0 left-0 right-0">
+                                                <blockquote slot="bottom"
+                                                    class="flex-1 w-full bg-white dark:bg-dark-card relative p-4 space-1">
+                                                    <h4 class="w-full text-left text-sm sm:text-base font-extrabold text-blueGray-dark dark:text-dark-text border-gray-200"
+                                                        data-ellipsis-id="1"><?php echo $nftName[$num] ?>
+                                                    </h4>
+                                                    <div
+                                                        class="flow-root text-sm text-blueGray-light dark:text-dark-text antialiased whitespace-nowrap">
+                                                        <div class="text-left float-left items-center gap-0.5 bg-blueGray-dark text-orangeWhiteHover rounded-md px-1.5"
+                                                            data-cy="coin-ETH">
+                                                            <!-- <i class="fab fa-ethereum fa-xs svelte-10eojg6"></i> -->
+                                                            <?php echo $nftPrice[$num] ?>
+                                                        </div>
+                                                        <a href="<?php echo $nftLinks[$num] ?>">
+                                                            <button
+                                                                class=" float-right bg-green-300 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                                                                <span style="color: white;">Buy</span>
+                                                            </button></a>
+                                                    </div>
+
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a> </div>
+                            <?php 
                     }
                     $num++;
                   }
-                  // echo "</div>";
-         ?>
-           
+?>
+                        </div>
+                    </section>
          </div>
       </div>
    </main>

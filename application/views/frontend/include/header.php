@@ -1,6 +1,7 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 <nav class="px-2 pt-2" style="height: 65px;">
 <div class="flex h-full justify-between p-2 rounded-xl bg-white items-center shadow-c">
-    <a href="/"><img src="assets/logo.png" style="height: 45px; margin: 0.25rem;"></a>
+    <a href="/"><img src="<?php echo base_url('assets/logo.png') ?>" style="height: 45px; margin: 0.25rem;"></a>
     <div class="flex items-center">
         <button class="nav-btn mr-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24">
