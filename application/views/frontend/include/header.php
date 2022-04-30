@@ -1,4 +1,9 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+<style>
+    a div img.h-full{
+        height: 350px !important;
+    }
+</style>
 <nav class="px-2 pt-2" style="height: 65px;">
 <div class="flex h-full justify-between p-2 rounded-xl bg-white items-center shadow-c">
     <a href="/"><img src="<?php echo base_url('assets/logo.png') ?>" style="height: 45px; margin: 0.25rem;"></a>

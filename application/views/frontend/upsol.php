@@ -45,7 +45,12 @@
                         }
                       }
                       if($i%7==1){
-                        array_push($nftLinks, htmlspecialchars($element->innertext));
+                         $links=[];
+                         foreach($element->find('a') as $e){
+                            array_push($links,$e->href);
+                         }
+                         array_push($nftLinks, $links);
+                         
                       }
                   }
                       $i++;
@@ -73,9 +78,10 @@
                   foreach ($nftLinks as $n) {
                     if($num>1)
                     {
+                      
                      ?>
                             <div class="px-2 mb-4"><a rel="noopener noreferrer nofollow"
-                                    href="<?php echo $nftLinks[$num][0] ?>" target="_blank">
+                                    href="#" target="_blank">
                                     <div class="transition-transform mt-2 md:hover:-translate-y-2 h-full shadow hover:shadow-lg rounded-lg overflow-hidden "
                                         data-cy="card-featured-collection">
                                         <div
@@ -102,17 +108,31 @@
                                                     </h4>
                                                     <div
                                                         class="flow-root text-sm text-blueGray-light dark:text-dark-text antialiased whitespace-nowrap">
-                                                        <div class="text-left float-left items-center gap-0.5 bg-blueGray-dark text-orangeWhiteHover rounded-md px-1.5"
-                                                            data-cy="coin-ETH">
-                                                            <!-- <i class="fab fa-ethereum fa-xs svelte-10eojg6"></i> -->
-                                                            <?php echo $nftPrice[$num] ?>
+                                                        <div class="text-left float-left items-center gap-0.5 bg-blueGray-dark text-orangeWhiteHover rounded-md"
+                                                            data-cy="coin-ETH" style="margin-top:6px">
+                                                            <div class="hover:text-blueGray-lightHover"><a
+                                                rel="noopener noreferrer nofollow" href="<?php echo $n[1] ?>"
+                                                target="_blank">Twitter <span class="ml-0.5"><i
+                                                        class="fas fa-globe sm"></i></span></a></div>
                                                         </div>
-                                                        <a href="<?php echo $nftLinks[$num] ?>">
+                                                        <a href="#">
                                                             <button
                                                                 class=" float-right bg-green-300 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center">
                                                                 <span style="color: white;">Know More</span>
                                                             </button></a>
                                                     </div>
+                                                    <div
+                                        class="flex justify-between text-sm text-blueGray-light dark:text-dark-text antialiased whitespace-nowrap">
+                                        <div class="hover:text-blueGray-lightHover"><a
+                                                rel="noopener noreferrer nofollow" href="<?php echo $n[0] ?>"
+                                                target="_blank">Website <span class="ml-0.5"><i
+                                                        class="fas fa-globe sm"></i></span></a></div>
+                                        <div class="hover:text-blueGray-lightHover"><a
+                                                rel="noopener noreferrer nofollow" href="<?php echo $n[2] ?>"
+                                                target="_blank">Discord <span style="color: rgb(88, 101, 242);"><i
+                                                        class="fab fa-discord hover:brightness-90 fa-sm "></i></span></a>
+                                        </div>
+                                    </div>
 
                                                 </blockquote>
                                             </div>
