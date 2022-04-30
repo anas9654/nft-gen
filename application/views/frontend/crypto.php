@@ -4,7 +4,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Underpriced NFT Finder | Solana</title>
     <link rel="stylesheet" href="<?php echo base_url('css/main.css') ?>">
-
+    <style>
+       div.content {
+         width: 100%!important;
+       }
+       table {
+         width: 100%!important;
+         max-width:unset!important;
+       }
+       .chakra-icon{
+          width:12px;
+       }
+    </style>
 
     </head>
   <body style="">

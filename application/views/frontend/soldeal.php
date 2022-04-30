@@ -73,7 +73,19 @@
                         }
                       
                   }
-
+                  $page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
+                  $total = count( $nftLinks); //total items in array    
+                  $limit = 18; //per page    
+                  $totalPages = ceil( $total/ $limit ); //calculate total pages
+                  $page = max($page, 1); //get 1 page when $_GET['page'] <= 0
+                  $page = min($page, $totalPages); //get last page when $_GET['page'] > $totalPages
+                  $offset = ($page - 1) * $limit;
+                  if( $offset < 0 ) $offset = 0;
+                  
+                  $nftLinks= array_slice( $nftLinks, $offset, $limit );
+                  $imagesLinks=array_slice( $imagesLinks, $offset, $limit );
+                  $nftName = array_slice( $nftName, $offset, $limit );
+                  $nftPrice = array_slice( $nftPrice, $offset, $limit );
                  
                   // echo "</div>";
          ?>
@@ -138,6 +150,7 @@
 ?>
                         </div>
                     </section>
+                    <?php include('include/pagination.php') ?>
          </div>
       </div>
    </main>

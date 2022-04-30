@@ -8,27 +8,31 @@
                 <button class="btn-secondary false">
                   <a href="up_sol">Upcoming Solana NFTs</a>
                 </button>
-                 <button class="btn-secondary false">
-                  <a href="soldeal">Hot Solana NFTs</a>
-                </button>
+                
 
 
                 <button class="btn-secondary false">
                   <a href="nft_eth">ETH NFTs</a>
                 </button>
                
-                <button class="btn-secondary false">
-                  <a href="ethdeal">Ethereum Deals of the Day</a>
-                </button>
+                
 
                  <button class="btn-secondary false">
                   <a href="up_eth">Upcoming NFT Projects</a>
                 </button>
+                <?php if($_SESSION['user']['roll']=="Pro"){ ?>
+                  <button class="btn-secondary false">
+                    <a href="soldeal">Hot Solana NFTs</a>
+                  </button>
+                  <button class="btn-secondary false">
+                    <a href="ethdeal">Ethereum Deals of the Day</a>
+                  </button>
+                  <button class="btn-secondary false">
+                    <a href="crypto">Cryptocurrencies</a>
+                  </button>
+                <?php } ?>
 
-
-                <button class="btn-secondary false">
-                  <a href="crypto">Cryptocurrencies</a>
-                </button>
+                
                
               </div>
             </div>
