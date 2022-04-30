@@ -209,7 +209,7 @@ class Home extends CI_Controller {
         return redirect('home');
       }
       $page='admin';
-      $users=$this->db->where('is_admin',0)->where('id'!=$_SESSION['user']['id'])->get('tblusers')->result_array();
+      $users=$this->db->where('is_admin',0)->where('id!='.$_SESSION['user']['id'])->get('tblusers')->result_array();
       $this->load->view("frontend/{$page}",["title"=>"Admin Panel","users"=>$users]); 
     }
     public function delete_user($id){

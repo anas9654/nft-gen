@@ -82,8 +82,8 @@
                   if( $offset < 0 ) $offset = 0;
                   
                   $nftLinks= array_slice( $nftLinks, $offset, $limit );
-                  $imagesLinks=array_slice( $imagesLinks, $offset, $limit );
-                  $nftName = array_slice( $nftName, $offset, $limit );
+                  $nftImgLinks=array_slice( $nftImgLinks, $offset, $limit );
+                  $nftNames = array_slice( $nftNames, $offset, $limit );
                   $nftPrice = array_slice( $nftPrice, $offset, $limit );
                   
 
