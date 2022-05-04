@@ -58,6 +58,11 @@ class Home extends CI_Controller {
 	  if(!isset($_SESSION['is_login'])){
          return redirect('home');
      }
+     if($_SESSION['user']['roll']=='Free' && $_GET['page']>5){
+          echo "<h1>You are not Pro User</h1>";
+          echo "<script>history.back();</script>";
+          exit();
+     }
      $page='main';
 	   $this->load->view("frontend/{$page}",["title"=>"Solana NFTs"]);  
 	}
@@ -66,6 +71,11 @@ class Home extends CI_Controller {
     if(!isset($_SESSION['is_login'])){
          return redirect('home');
      }
+     if($_SESSION['user']['roll']=='Free' && $_GET['page']>5){
+      echo "<h1>You are not Pro User</h1>";
+      echo "<script>history.back();</script>";
+      exit();
+ }
      $page='maineth';
      $this->load->view("frontend/{$page}",["title"=>"ETH NFTs"]);  
   }
@@ -74,6 +84,11 @@ class Home extends CI_Controller {
     if(!isset($_SESSION['is_login'])){
          return redirect('home');
      }
+     if($_SESSION['user']['roll']=='Free' && $_GET['page']>5){
+      echo "<h1>You are not Pro User</h1>";
+      echo "<script>history.back();</script>";
+      exit();
+ }
      $page='upeth';
      $this->load->view("frontend/{$page}",["title"=>"Up ETH NFTs"]);  
   }
@@ -81,6 +96,11 @@ class Home extends CI_Controller {
     if(!isset($_SESSION['is_login'])){
          return redirect('home');
      }
+     if($_SESSION['user']['roll']=='Free' && $_GET['page']>5){
+      echo "<h1>You are not Pro User</h1>";
+      echo "<script>history.back();</script>";
+      exit();
+ }
      $page='upsol';
      $this->load->view("frontend/{$page}",["title"=>"Up SOL NFTs"]);  
   }
@@ -88,6 +108,7 @@ class Home extends CI_Controller {
     if(!isset($_SESSION['is_login'])){
          return redirect('home');
      }
+
      $page='crypto';
      $this->load->view("frontend/{$page}",["title"=>"Crypto Alerts"]);  
   }
@@ -96,6 +117,11 @@ class Home extends CI_Controller {
     if(!isset($_SESSION['is_login'])){
          return redirect('home');
      }
+     if($_SESSION['user']['roll']=='Free' && $_GET['page']>5){
+      echo "<h1>You are not Pro User</h1>";
+      echo "<script>history.back();</script>";
+      exit();
+ }
      $page='soldeal';
      $this->load->view("frontend/{$page}",["title"=>"Sol Deal"]);  
   }
@@ -103,6 +129,11 @@ class Home extends CI_Controller {
     if(!isset($_SESSION['is_login'])){
          return redirect('home');
      }
+     if($_SESSION['user']['roll']=='Free' && $_GET['page']>5){
+      echo "<h1>You are not Pro User</h1>";
+      echo "<script>history.back();</script>";
+      exit();
+ }
      $page='ethdeal';
      $this->load->view("frontend/{$page}",["title"=>"ETH Deal"]);  
   }

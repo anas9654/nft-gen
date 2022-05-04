@@ -62,6 +62,7 @@ foreach($html->find('.all_coll_row') as $element)
     $i++;
 }
 $page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
+
 $total = count( $nftLinks); //total items in array    
 $limit = 18; //per page    
 $totalPages = ceil( $total/ $limit ); //calculate total pages
