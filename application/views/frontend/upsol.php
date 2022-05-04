@@ -89,8 +89,9 @@
                                             class="relative flex flex-col min-w-0 break-words bg-transparent w-full h-full">
                                             <div
                                                 class="w-full h-full align-middle overflow-hidden relative svelte-f3nlpp">
+                                                <?php echo $imagesLinks[$num] ?>
                                                 <img class="w-full h-full align-middle object-cover dark:brightness-80 dark:contrast-103 svelte-f3nlpp"
-                                                    alt="Cool Pigz" src="<?php echo $imagesLinks[$num] ?>"
+                                                   src="<?php echo $imagesLinks[$num] ?>"
                                                     loading="lazy" decoding="async"> <img
                                                     class="w-full h-full align-middle object-cover placeholder dark:hidden svelte-f3nlpp opacity-0 absolute"
                                                     src="/assets/img/rarity-loading.gif" alt="Cool Pigz"> <img
@@ -118,11 +119,11 @@
                                                         class="fas fa-globe sm"></i></span></a></div>
                                                         </div>
                                                         <?php } ?>
-                                                        <a href="#">
+                                                        <!-- <a href="#">
                                                             <button
                                                                 class=" float-right bg-green-300 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded inline-flex items-center" style="margin-bottom:3px">
                                                                 <span style="color: white;">Know More</span>
-                                                            </button></a>
+                                                            </button></a> -->
                                                     </div>
                                                     <div
                                         class="flex justify-between text-sm text-blueGray-light dark:text-dark-text antialiased whitespace-nowrap">
@@ -143,7 +144,7 @@
                                     <a href="#">
                                     <center>
                                     <button onclick='manage_nft(<?php echo json_encode($data) ?>)'' class="w-full float-right bg-green-300 hover:bg-green-400 text-white-800 font-bold py-2 px-4 rounded items-center">
-                                        <span class="text-center" style="color: white;">Save</span>
+                                        <span class="text-center" style="color: white;">Add to Reminder</span>
                                     </button>  
                                         
                                     </center>
