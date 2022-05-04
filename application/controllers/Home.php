@@ -148,7 +148,9 @@ class Home extends CI_Controller {
      if(!isset($_SESSION['is_login'])){
          return redirect('home');
      }
-     $this->load->view("crazyspects/index",["title"=>"Profile Details","page"=>"profile.php"]);   
+     $data =$this->db->where('id',$_SESSION['user']['id'])->get('tblusers')->result_array();
+     $page='profile';
+     $this->load->view("frontend/{$page}",["title"=>"Profile","user"=>$data[0]]);  
     }
     
     public function sign_in(){
@@ -173,24 +175,12 @@ class Home extends CI_Controller {
     }
 
     public function update_profile(){
-     if(isset($_POST['name'])){
-      $update['Name']=$this->input->post('name'); 
+     if(isset($_POST['email'])){
       $update['emailId']=$this->input->post('email'); 
-      $update['mobileNumber']=$this->input->post('mobile'); 
-      $update['lastUpdationDate']=date('Y-m-d');
-      $config['file_name'] = time().'-'.$_FILES["image"]['name'];
-      $config['upload_path' ]  = 'uploads/profile/'; 
-      $config['allowed_types'] = 'gif|jpg|png'; 
-      $this->load->library('upload', $config);
-      $this->upload->initialize($config);
-      if ( ! $this->upload->do_upload('image')) {
-        $data=["status"=>0,"err"=>$this->upload->display_errors()];
-      }else{ 
-        $update['profile'] = $this->upload->file_name;
+      if($this->input->post('password')!=""){
+        $update['userPassword'] =md5($this->input->post('password'));
       }
-      $this->db->where('id',$_SESSION['user']['id'])->update('tblusers',$update);
-      $userdata=$this->db->where('id',$_SESSION['user']['id'])->get('tblusers')->result_array();
-      $_SESSION['user']=$userdata[0];
+      $perform =$this->db->where('id',$_SESSION['user']['id'])->update('tblusers',$update);
       $data=["status"=>1,"err"=>"Profile Updated!"];
     }else{
       $data=["status"=>0,"err"=>"Required Field Missing!"];
@@ -258,6 +248,35 @@ class Home extends CI_Controller {
         $this->response->setStatusCode(422, 'Nope. Not here.');
         exit();
       }
+    }
+    public function reminders(){
+      if(!isset($_SESSION['is_login'])){
+        return redirect('home');
+      }
+      $page='reminders';
+      $nfts=$this->db->where('user_id',$_SESSION['user']['id'])->get('save_nft')->result_array();
+      $this->load->view("frontend/{$page}",["title"=>"Reminders","nfts"=>$nfts]);  
+    }
+    public function updatenft(){
+      if($_SESSION['is_login']!=true && $_SESSION['user']['is_admin']!=1){
+        echo "You Are not authorized!";
+        exit();
+      }
+      if(isset($_POST['data'])){
+        $data=(array) json_decode($_POST['data']);
+        $checkLink=$this->db->where(['link!=""'])->where('link="'.$data['links'][0].'"')->get('save_nft');
+        if($checkLink->num_rows()>0){
+          echo "This NFT already saved!";
+          exit();
+        }
+        $insert['link']=$data['links'][0];
+        $insert['data']=json_encode($data);
+        $insert['user_id']=$_SESSION['user']['id'];
+        $this->db->insert('save_nft',$insert);
+        echo "Saved!";
+        exit();
+      }
+      echo "Something went wrong!";
     }
 }
 

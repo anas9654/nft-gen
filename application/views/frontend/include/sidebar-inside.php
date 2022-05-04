@@ -31,7 +31,10 @@
                     <a href="crypto">Cryptocurrencies</a>
                   </button>
                 <?php } ?>
-
+                <button class="btn-secondary false">
+                  <a href="reminders">Reminders</a>
+                </button>
+                
                 
                
               </div>

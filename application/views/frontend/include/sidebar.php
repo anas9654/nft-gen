@@ -12,4 +12,5 @@ $current_page=$this->router->fetch_method();
      <a class="<?php echo $current_page=='admin'?'active':'' ?>" href="<?php echo base_url('home/admin') ?>">Admin</a>
 
     <?php } ?>
+    <a href="<?php echo base_url('home/profile') ?>">Profile</a>
 </div>
